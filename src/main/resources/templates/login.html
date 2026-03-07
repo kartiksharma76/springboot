@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Digital Learning Login</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#4facfe,#00f2fe);
+            height:100vh;
+            margin:0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container{
+            background:white;
+            padding:30px;
+            width:700px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.2);
+            text-align:center;
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        .login-wrapper{
+            display:flex;
+            justify-content:space-between;
+        }
+
+        .box{
+            width:45%;
+            background:#f9f9f9;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 8px rgba(0,0,0,0.1);
+        }
+
+        input{
+            width:95%;
+            padding:10px;
+            margin:8px 0;
+            border:1px solid #ccc;
+            border-radius:6px;
+        }
+
+        button{
+            width:100%;
+            padding:10px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:6px;
+            font-size:15px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        .error{
+            color:red;
+            font-weight:bold;
+            margin-bottom:10px;
+        }
+
+        .footer{
+            margin-top:20px;
+            font-size:12px;
+            color:gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🎓 Digital Learning System</h2>
+
+    <!-- error message -->
+    <p class="error" th:text="${error}"></p>
+
+    <div class="login-wrapper">
+
+        <!-- Student Login -->
+        <div class="box">
+            <form action="/student-login" method="post">
+                <h3>👨‍🎓 Student Login</h3>
+                <input type="text" name="email" placeholder="Enter Email" required>
+                <input type="password" name="password" placeholder="Enter Password" required>
+                <button type="submit">Login as Student</button>
+            </form>
+        </div>
+
+        <!-- Teacher Login -->
+        <div class="box">
+            <form action="/teacher-login" method="post">
+                <h3>👩‍🏫 Teacher Login</h3>
+                <input type="text" name="email" placeholder="Enter Email" required>
+                <input type="password" name="password" placeholder="Enter Password" required>
+                <button type="submit">Login as Teacher</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Digital Learning System © 2026
+    </div>
+
+</div>
+
+</body>
+</html>

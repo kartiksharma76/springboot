@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Lessons</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2{
+            background: #007bff;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container{
+            width: 80%;
+            margin: 30px auto;
+        }
+
+        .card{
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .card h3{
+            margin-top: 0;
+            color: #333;
+        }
+
+        .card p{
+            color: #555;
+        }
+
+        .btn{
+            display: inline-block;
+            padding: 8px 15px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .btn:hover{
+            background: #218838;
+        }
+
+        .back-btn{
+            display: inline-block;
+            margin: 30px;
+            padding: 10px 18px;
+            background: #dc3545;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .back-btn:hover{
+            background: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📚 All Lessons</h2>
+
+<div class="container">
+
+    <div class="card" th:each="lesson : ${lessons}">
+        <h3 th:text="${lesson.title}"></h3>
+        <p th:text="${lesson.description}"></p>
+
+        <a class="btn"
+           th:href="@{'/student/quiz/' + ${lesson.id}}">
+            🎯 Attempt Quiz
+        </a>
+    </div>
+
+</div>
+
+<a class="back-btn" href="/student/dashboard">⬅ Back to Dashboard</a>
+
+</body>
+</html>
