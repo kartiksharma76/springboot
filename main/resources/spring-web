@@ -1,0 +1,83 @@
+@RestController=@Controller + @ResponseBody
+ used to building Restful web service
+@RestController
+public class DemoController {
+	@GetMapping("/")
+	public String test() {
+		return "Server is up";
+	}
+	
+	
+	
+	
+@GetMapping=  @RequestMapping(Method) + @PostMapping
+handle http get request (fetch and read data)
+
+@GetMapping("/getStudent")
+	public Student getStudentById(@RequestParam(name = "id") int id) {
+		Student student = new Student();
+		if (id == 10) {
+			student.setId(10);
+			student.setName("Kartik");
+			//student.setCollege("SIRT");
+		}
+		return student;
+	}
+	
+	
+	
+	
+
+@RequestParam= (no build another annotation (Independent))
+RequestParam are used in spring to extract query parameter from an 
+URL HTTP request bind the method and parameter through controller 
+@GetMapping("/getStudent")
+	public Student getStudentById(@RequestParam(name = "id") int id) {
+		Student student = new Student();
+		if (id == 10) {
+			student.setId(10);
+			student.setName("Kartik");
+			//student.setCollege("SIRT");
+		}
+		return student;
+	}
+	
+	
+	
+	
+
+@PathVariable= (Independent)
+it can be used to extract value directly from URL path
+@GetMapping("/greeting/firstName/{firstName}/lastName/{lastName}")
+	public String greeting(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName) {
+		System.out.println(firstName + " " + lastName);
+		return "Welcome" + " " + firstName + " " + lastName;
+	}
+
+
+
+
+
+@PostMapping= that is used to handle  HTTP post  request(send and create data)
+@PostMapping("/saveStudent")
+	public String saveStudent(@RequestBody Student student) {
+	//	System.out.println(student.getId() + " " + student.getName() + " " + student.getCollege());
+		return "Data saved successfully";
+	}
+
+
+
+
+@RequestBody= @PostMapping + @PutMapping 
+it can be used to bind the Http request (JSON, XML) directly to java object
+@PostMapping("/saveStudent")
+	public String saveStudent(@RequestBody Student student) {
+	//	System.out.println(student.getId() + " " + student.getName() + " " + student.getCollege());
+		return "Data saved successfully";
+	}
+	
+	
+	
+
+Q1)Difference between get and post
+Q2)Difference between put and post

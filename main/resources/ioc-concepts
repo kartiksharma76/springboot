@@ -1,0 +1,73 @@
+Q1)Important annotation and their uses ?
+@Component
+@Service
+@Repository
+@Autowire
+@Resource
+
+Bean Scopes in SpringContainer
+1.singleton(default)
+2.prototype
+3.request
+4.session
+5.application
+6.websocket
+
+Q2).what is difference between singleton and prototype scope ?
+Singleton-
+ Only one instance of the bean is created per Spring container.
+ Spring creates the bean at container startup and reuses it every time it is needed.
+ 
+prototype-
+A new instance of the bean is created every time it is requested from the container.
+Spring does not manage the complete lifecycle.
+
+Q3).what is difference between @Repository and @Service Annotation?
+@Repository
+ Purpose:
+Used to indicate that the class is a Data Access Object (DAO) and interacts directly with the database.
+ Key Points:
+	Applied to classes that handle CRUD operations using JPA, JDBC, Hibernate, etc.
+Spring translates persistence exceptions into Spring’s DataAccessException (exception translation feature).
+Used mostly in the repository (data) layer
+
+@Service
+ Purpose:
+Used to mark a class as a service provider — it holds business logic and calls one or more repositories to fulfill operations.
+ Key Points:
+Indicates a class belongs to the service (business logic) layer.
+Improves readability and separation of concerns.
+No automatic exception translation (unlike @Repository).
+
+Q4). what is Dependency Injection(Invoke) ?
+     the goal of dependency injection to write a loosely couple code it means a class can not be create own dependencies Rather 
+     it is obtained from some external source .
+     Dependency-if a class can need service to another class that means it is called dependency.
+     Injection- when this dependency can provide to external source like-constructor, setter method or interface to a process 
+     is.
+     
+Q5). What is benefit of dependency injection ?
+a.reduce coupling(low coupling)
+b.increase cohesion(high cohesion)
+c.increase maintainability
+d.increase flexibility
+e.increase testability
+f.increase readability
+g.increase  usability
+
+Q6).what is difference between @Autowired and @Resource ?
+  @Autowired-
+  this can inject dependency type of spring.
+  if there are single type of many bean this case can use @Qualifier to select bean.
+   example- i need mechanic .
+  @Resources-
+  this can inject the dependency through a name.
+  if there is no name then can find the bean of field to name.
+  example- I need Ravi mechanic.
+
+
+Q7). how you can inject a Bean of third party library(jdk, some other jar)
+NOTE:refer AppCongig class
+
+
+
