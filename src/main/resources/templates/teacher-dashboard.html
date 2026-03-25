@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Teacher Dashboard</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin:0;
+            background: linear-gradient(135deg,#ff9966,#ff5e62);
+            padding:40px;
+        }
+
+        h2{
+            text-align:center;
+            color:white;
+            margin-bottom:30px;
+        }
+
+        .container{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+        }
+
+        .card{
+            background:white;
+            padding:25px;
+            width:420px;
+            border-radius:15px;
+            box-shadow:0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        h3{
+            margin-top:0;
+            text-align:center;
+        }
+
+        input, select{
+            width:95%;
+            padding:10px;
+            margin:8px 0;
+            border:1px solid #ccc;
+            border-radius:8px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:10px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:15px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        .logout{
+            display:block;
+            width:200px;
+            margin:40px auto 0;
+            padding:12px;
+            text-align:center;
+            background:#dc3545;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            font-weight:bold;
+        }
+
+        .logout:hover{
+            background:#c82333;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>👩‍🏫 Teacher Dashboard</h2>
+
+<div class="container">
+
+    <!-- ================= ADD LESSON ================= -->
+    <div class="card">
+        <h3>📚 Add Lesson</h3>
+
+        <form action="/teacher/add-lesson" method="post">
+            <input type="text" name="title" placeholder="Lesson Title" required>
+            <input type="text" name="description" placeholder="Description">
+            <input type="text" name="videoUrl" placeholder="YouTube Video URL">
+            <button type="submit">Add Lesson</button>
+        </form>
+    </div>
+
+
+    <!-- ================= ADD QUIZ ================= -->
+    <div class="card">
+        <h3>📝 Add Quiz</h3>
+
+        <form action="/teacher/add-quiz" method="post">
+
+            <!-- 🔥 IMPORTANT: SELECT LESSON -->
+            <select name="lessonId" required>
+                <option value="">Select Lesson</option>
+
+                <option th:each="lesson : ${lessons}"
+                        th:value="${lesson.id}"
+                        th:text="${lesson.title}">
+                </option>
+            </select>
+
+            <input type="text" name="question" placeholder="Question" required>
+            <input type="text" name="option1" placeholder="Option 1" required>
+            <input type="text" name="option2" placeholder="Option 2" required>
+            <input type="text" name="option3" placeholder="Option 3" required>
+            <input type="text" name="option4" placeholder="Option 4" required>
+            <input type="text" name="correctAnswer" placeholder="Correct Answer" required>
+
+            <button type="submit">Add Quiz</button>
+        </form>
+    </div>
+
+</div>
+
+<a class="logout" href="/logout">🚪 Logout</a>
+
+</body>
+</html>
